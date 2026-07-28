@@ -1,10 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Astronkar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronkar</title>
+
+    <link rel="icon" href="/favicon.ico">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            color: #111111;
+            font-family: Inter, system-ui, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 650px;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .description {
+            margin-top: 30px;
+            color: #444;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .links {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            margin-top: 42px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #111;
+
+            border: 1px solid #ddd;
+            padding: 12px 22px;
+            border-radius: 999px;
+
+            transition: .2s;
+        }
+
+        a:hover {
+            background: #111;
+            color: white;
+            border-color: #111;
+        }
+
+        footer {
+            margin-top: 70px;
+            color: #999;
+            font-size: .9rem;
+        }
+    </style>
 </head>
+
 <body>
-  Redirecting...
+
+<div class="container">
+
+    <h1>Astronkar</h1>
+
+    <p class="subtitle">
+        AI Engineer • Builder • IIT Gandhinagar
+    </p>
+
+    <p class="description">
+        Building AI products, experimenting with intelligent systems,
+        and creating software inspired by curiosity, engineering, and space.
+    </p>
+
+    <div class="links">
+        <a href="https://portfolio.astronkar.in">Portfolio</a>
+        <a href="/github">GitHub</a>
+        <a href="/linkedin">LinkedIn</a>
+        <a href="/resume">Resume</a>
+    </div>
+
+    <footer>
+        © 2026 Astronkar
+    </footer>
+
+</div>
+
 </body>
 </html>
