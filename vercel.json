@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/github",
+      "destination": "https://github.com/OnkarGaikwad-astro",
+      "permanent": true
+    },
+    {
+      "source": "/linkedin",
+      "destination": "https://www.linkedin.com/in/onk4r",
+      "permanent": true
+    },
+    {
+      "source": "/resume",
+      "destination":  "/resume.pdf",
+      "permanent": true
+    }
+  ]
+}
