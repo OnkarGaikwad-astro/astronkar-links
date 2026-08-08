@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Astronkar</title>
+
+    <meta name="description"
+        content="Astronkar — AI Engineer, Builder, and IIT Gandhinagar student building intelligent software.">
 
     <link rel="icon" href="/favicon.ico">
 
@@ -14,104 +19,540 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #ffffff;
-            color: #111111;
-            font-family: Inter, system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 24px;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            min-height: 100vh;
-            text-align: center;
-            padding: 24px;
+            position: relative;
+            overflow: hidden;
+
+            color: #f5f7ff;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                system-ui,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(91, 108, 255, 0.15),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 15% 85%,
+                    rgba(126, 67, 255, 0.10),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(0, 180, 255, 0.08),
+                    transparent 25%
+                ),
+                #05060a;
         }
+
+
+        /* =========================================
+           STAR FIELD
+        ========================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            background-image:
+                radial-gradient(1px 1px at 8% 18%, rgba(255,255,255,.65), transparent),
+                radial-gradient(1px 1px at 17% 72%, rgba(255,255,255,.45), transparent),
+                radial-gradient(1px 1px at 26% 37%, rgba(255,255,255,.55), transparent),
+                radial-gradient(1px 1px at 34% 82%, rgba(255,255,255,.35), transparent),
+                radial-gradient(1px 1px at 43% 15%, rgba(255,255,255,.55), transparent),
+                radial-gradient(1px 1px at 52% 67%, rgba(255,255,255,.40), transparent),
+                radial-gradient(1px 1px at 63% 29%, rgba(255,255,255,.65), transparent),
+                radial-gradient(1px 1px at 71% 84%, rgba(255,255,255,.35), transparent),
+                radial-gradient(1px 1px at 81% 48%, rgba(255,255,255,.55), transparent),
+                radial-gradient(1px 1px at 92% 21%, rgba(255,255,255,.60), transparent),
+                radial-gradient(1px 1px at 14% 48%, rgba(255,255,255,.30), transparent),
+                radial-gradient(1px 1px at 78% 10%, rgba(255,255,255,.40), transparent);
+
+            opacity: .55;
+        }
+
+
+        /* =========================================
+           AMBIENT ORB
+        ========================================= */
+
+        .orb {
+            position: fixed;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(93, 110, 255, 0.16),
+                    rgba(93, 110, 255, 0.05) 45%,
+                    transparent 70%
+                );
+
+            filter: blur(25px);
+
+            pointer-events: none;
+
+            animation:
+                float 9s ease-in-out infinite,
+                drift 14s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-22px) scale(1.05);
+            }
+        }
+
+        @keyframes drift {
+            from {
+                left: 35%;
+                top: 20%;
+            }
+
+            to {
+                left: 45%;
+                top: 28%;
+            }
+        }
+
+
+        /* =========================================
+           MAIN CARD
+        ========================================= */
 
         .container {
-            max-width: 650px;
+            position: relative;
+            z-index: 2;
+
+            width: min(720px, 100%);
+
+            padding: 60px 40px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.055),
+                    rgba(255,255,255,0.018)
+                );
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            border-radius: 28px;
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+
+            box-shadow:
+                0 30px 100px rgba(0,0,0,.45),
+                inset 0 1px 0 rgba(255,255,255,.06);
+
+            animation: appear .8s ease-out;
         }
+
+        .container::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(255,255,255,.04),
+                    transparent 35%
+                );
+
+            pointer-events: none;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+
+        /* =========================================
+           STATUS
+        ========================================= */
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 13px;
+
+            margin-bottom: 25px;
+
+            border-radius: 999px;
+
+            color: #aeb7d9;
+
+            background: rgba(255,255,255,.035);
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            font-size: .78rem;
+
+            letter-spacing: .2px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #7d8cff;
+
+            box-shadow:
+                0 0 8px #7d8cff,
+                0 0 18px rgba(125,140,255,.6);
+
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .45;
+                transform: scale(.72);
+            }
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================= */
 
         h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            font-weight: 700;
-            letter-spacing: -2px;
+            font-size: clamp(3.4rem, 9vw, 7rem);
+
+            font-weight: 750;
+
+            line-height: .95;
+
+            letter-spacing: -5px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #ffffff 15%,
+                    #aeb8ff 45%,
+                    #ffffff 70%,
+                    #8e9aff 95%
+                );
+
+            background-size: 250% auto;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            animation:
+                title-shine 7s linear infinite;
         }
+
+        @keyframes title-shine {
+
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 250% center;
+            }
+        }
+
+
+        /* =========================================
+           SUBTITLE
+        ========================================= */
 
         .subtitle {
-            margin-top: 12px;
-            color: #666;
-            font-size: 1.1rem;
+            margin-top: 18px;
+
+            color: #9da5bf;
+
+            font-size: clamp(1rem, 2vw, 1.15rem);
+
+            letter-spacing: .2px;
         }
 
+        .subtitle span {
+            color: #737fff;
+            padding: 0 5px;
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
         .description {
-            margin-top: 30px;
-            color: #444;
+            max-width: 570px;
+
+            margin: 28px auto 0;
+
+            color: #858ca3;
+
             line-height: 1.8;
+
             font-size: 1rem;
         }
 
+
+        /* =========================================
+           LINKS
+        ========================================= */
+
         .links {
             display: flex;
-            gap: 14px;
+
             justify-content: center;
+
             flex-wrap: wrap;
 
-            margin-top: 42px;
+            gap: 10px;
+
+            margin-top: 38px;
         }
 
-        a {
+        .links a {
+            position: relative;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 19px;
+
+            border-radius: 12px;
+
             text-decoration: none;
-            color: #111;
 
-            border: 1px solid #ddd;
-            padding: 12px 22px;
-            border-radius: 999px;
+            color: #cdd2e5;
 
-            transition: .2s;
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid rgba(255,255,255,.09);
+
+            font-size: .9rem;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease,
+                color .25s ease;
         }
 
-        a:hover {
-            background: #111;
-            color: white;
-            border-color: #111;
+        .links a:hover {
+            transform: translateY(-4px);
+
+            color: #ffffff;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border-color:
+                rgba(145,155,255,.45);
+
+            box-shadow:
+                0 10px 30px rgba(80,90,255,.15);
         }
+
+        .links a:active {
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
 
         footer {
-            margin-top: 70px;
-            color: #999;
-            font-size: .9rem;
+            margin-top: 45px;
+
+            color: #505568;
+
+            font-size: .78rem;
+
+            letter-spacing: .3px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 16px;
+            }
+
+            .container {
+                padding: 45px 22px;
+
+                border-radius: 22px;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .description {
+                font-size: .92rem;
+            }
+
+            .links {
+                gap: 8px;
+            }
+
+            .links a {
+                padding: 10px 15px;
+            }
+
+            .orb {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-<div class="container">
+    <!-- Ambient background -->
+    <div class="orb"></div>
 
-    <h1>Astronkar</h1>
 
-    <p class="subtitle">
-        AI Engineer • Builder • IIT Gandhinagar
-    </p>
+    <!-- Main content -->
+    <main class="container">
 
-    <p class="description">
-        Building AI products, experimenting with intelligent systems,
-        and creating software inspired by curiosity, engineering, and space.
-    </p>
+        <div class="status">
+            <span class="status-dot"></span>
+            Building something interesting
+        </div>
 
-    <div class="links">
-        <a href="https://portfolio.astronkar.in">Portfolio</a>
-        <a href="/github">GitHub</a>
-        <a href="/linkedin">LinkedIn</a>
-        <a href="/resume">Resume</a>
-    </div>
 
-    <footer>
-        © 2026 Astronkar
-    </footer>
+        <h1>Astronkar</h1>
 
-</div>
+
+        <p class="subtitle">
+            AI Engineer
+            <span>•</span>
+            Builder
+            <span>•</span>
+            IIT Gandhinagar
+        </p>
+
+
+        <p class="description">
+            Building AI products, experimenting with intelligent systems,
+            and creating software inspired by curiosity, engineering, and space.
+        </p>
+
+
+        <div class="links">
+
+            <a href="https://portfolio.astronkar.in">
+                Portfolio
+            </a>
+
+            <a href="/github">
+                GitHub
+            </a>
+
+            <a href="/linkedin">
+                LinkedIn
+            </a>
+
+            <a href="/resume">
+                Resume
+            </a>
+
+        </div>
+
+
+        <footer>
+            © 2026 Astronkar
+        </footer>
+
+    </main>
 
 </body>
+
 </html>
